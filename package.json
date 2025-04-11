@@ -16,7 +16,10 @@
     "authentication"
   ],
   "node-red" : {
-    "version": ">=3.1"
+    "version": ">=3.1",
+	"plugins": {
+        "node-red-dashboard-2-queryparam-auth": "index.js"
+      }
   },
   "dependencies": {
     "@flowfuse/node-red-dashboard": "^1.10"
