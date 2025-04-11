@@ -22,7 +22,8 @@ module.exports = function (RED) {
 		const headers = conn.request.headers;
         const queryParams = conn.request?.query;
         // Just for debugging ... 
-        console.warn(`${JSON.stringify(conn)}`)
+        console.warn(`${JSON.stringify(conn.request)}`)
+		console.warn(`${JSON.stringify(headers)}`)
 		console.warn(`${JSON.stringify(msg)}`)
         const http_user = queryParams?.identifier || null
         if (!http_user) {
