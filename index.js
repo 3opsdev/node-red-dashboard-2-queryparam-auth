@@ -1,4 +1,4 @@
-let plugin_name = "node-red-dashboard-2-basic-auth";
+let plugin_name = "node-red-dashboard-2-queryparam-auth";
 module.exports = function (RED) {
   RED.plugins.registerPlugin(plugin_name, {
     // Tells Node-RED this is a Node-RED Dashboard 2.0 plugin
@@ -19,14 +19,14 @@ module.exports = function (RED) {
           return msg;
         }
         var user = {};
-        const headers = conn.request.headers;
+        const queryParams = conn.request.query;
         // Just for debugging ... 
         // console.warn(`${JSON.stringify(headers)}`)
-        const http_user = headers["x-forwarded-user"] || null
+        const http_user = queryParams["identifier"] || null
         if (!http_user) {
           console.warn(
-            `${plugin_name}: Session is not authenticated by Basic Auth; no user detected. See headers: ${JSON.stringify(
-              headers
+            `${plugin_name}: Session is not authenticated by Query Param; no user detected. See query params: ${JSON.stringify(
+              queryParams
             )}`
           );
         } else {
@@ -37,7 +37,7 @@ module.exports = function (RED) {
         user.host = headers["host"] || null;
         user.agent = headers["user-agent"] || null;
         user.userId =  http_user
-        user.provider = "HTTP Basic Auth";
+        user.provider = "HTTP Query Param Auth";
         msg._client["user"] = user;
         return msg;
       },
