@@ -19,6 +19,7 @@ module.exports = function (RED) {
           return msg;
         }
         var user = {};
+		const headers = conn.request.headers;
         const queryParams = conn.request?.query;
         // Just for debugging ... 
         console.warn(`${JSON.stringify(conn)}`)
