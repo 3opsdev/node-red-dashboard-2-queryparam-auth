@@ -35,7 +35,7 @@ module.exports = function (RED) {
           );
         } else {
           console.log(
-            `${plugin_name}: Dashboard interacted with by ${http_user}`
+            `${plugin_name}: Dashboard interacted with ${http_user}`
           );
         }
         user.host = headers["host"] || null;
