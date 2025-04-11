@@ -20,11 +20,13 @@ module.exports = function (RED) {
         }
         var user = {};
 		const headers = conn.request.headers;
+		const url = conn.request?.url;
         const queryParams = conn.request?.query;
         // Just for debugging ... 
-        console.warn(`${JSON.stringify(conn.request)}`)
-		console.warn(`${JSON.stringify(headers)}`)
-		console.warn(`${JSON.stringify(msg)}`)
+        console.warn(`${JSON.stringify(conn.request)}\r\n\r\n`)
+		console.warn(`${JSON.stringify(headers)}\r\n\r\n`)
+		console.warn(`${JSON.stringify(url)}\r\n\r\n`)
+		console.warn(`${JSON.stringify(queryParams)}\r\n\r\n`)
         const http_user = queryParams?.identifier || null
         if (!http_user) {
           console.warn(
