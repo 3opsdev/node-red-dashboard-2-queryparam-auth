@@ -19,10 +19,10 @@ module.exports = function (RED) {
           return msg;
         }
         var user = {};
-        const queryParams = conn.request.query;
+        const queryParams = conn.request?.query;
         // Just for debugging ... 
-        // console.warn(`${JSON.stringify(headers)}`)
-        const http_user = queryParams["identifier"] || null
+        console.warn(`${JSON.stringify(conn.request)}`)
+        const http_user = queryParams?.identifier || null
         if (!http_user) {
           console.warn(
             `${plugin_name}: Session is not authenticated by Query Param; no user detected. See query params: ${JSON.stringify(
