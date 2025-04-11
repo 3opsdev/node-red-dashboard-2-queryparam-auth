@@ -20,19 +20,18 @@ module.exports = function (RED) {
         }
         var user = {};
 		const headers = conn.request.headers;
-		const url = conn.request?.url;
-        const queryParams = conn.request?.query;
-        // Just for debugging ... 
-        console.warn(`${JSON.stringify(conn.request)}\r\n\r\n`)
+		
+		const referer = headers["referer"] || null
+		let http_user = null;
+		if (referer) {
+			const urlParams = new URLSearchParams(new URL(referer).search);
+			http_user = urlParams.get('identifier');
+		}
+	    // Just for debugging ... 
 		console.warn(`${JSON.stringify(headers)}\r\n\r\n`)
-		console.warn(`${JSON.stringify(url)}\r\n\r\n`)
-		console.warn(`${JSON.stringify(queryParams)}\r\n\r\n`)
-        const http_user = queryParams?.identifier || null
         if (!http_user) {
           console.warn(
-            `${plugin_name}: Session is not authenticated by Query Param; no user detected. See query params: ${JSON.stringify(
-              queryParams
-            )}`
+            `${plugin_name}: Session is not authenticated by Query Param; no user detected. See referer header: ${JSON.stringify(headers)}`
           );
         } else {
           console.log(
