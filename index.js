@@ -1,4 +1,4 @@
-let plugin_name = "node-red-dashboard-2-queryparam-auth";
+let plugin_name = "node-red-dashboard-2-queryparams-clientdata";
 module.exports = function (RED) {
   RED.plugins.registerPlugin(plugin_name, {
     // Tells Node-RED this is a Node-RED Dashboard 2.0 plugin

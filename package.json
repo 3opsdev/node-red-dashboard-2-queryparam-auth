@@ -1,7 +1,7 @@
 {
-  "name": "@3ops/node-red-dashboard-2-queryparam-auth",
+  "name": "@3ops/node-red-dashboard-2-queryparams-clientdata",
   "version": "0.1.1",
-  "description": "Dashboard auth with queryparam auth",
+  "description": "Dashboard client data plugin which injects queryparams in client data",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,7 +18,7 @@
   "node-red" : {
     "version": ">=3.1",
     "plugins": {
-        "node-red-dashboard-2-queryparam-auth": "index.js"
+        "node-red-dashboard-2-queryparams-clientdata": "index.js"
       }
   },
   "dependencies": {
@@ -26,6 +26,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/3opsdev/node-red-dashboard-2-queryparam-auth"
+    "url": "git+https://github.com/3opsdev/node-red-dashboard-2-queryparams-clientdata"
   }
 }

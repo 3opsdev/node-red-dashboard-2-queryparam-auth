@@ -1,7 +1,7 @@
-# Node-RED Dashboard with Query Param Auth
+# Node-RED Dashboard which injects query params in client data object
 
 
 
 ## Configuration
-Enter the dashboard with queryParam ?identifier=x
-The x value will be injected in the _client.
+Enter the dashboard with queryParams ?param1=value&param2=value2
+The query params will be injected in _client.queryParams
