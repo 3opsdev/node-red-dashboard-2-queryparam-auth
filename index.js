@@ -18,31 +18,16 @@ module.exports = function (RED) {
           );
           return msg;
         }
-        var user = {};
+        var queryParams = {};
 		const headers = conn.request.headers;
 		
 		const referer = headers["referer"] || null
-		let http_user = null;
 		if (referer) {
-			const urlParams = new URLSearchParams(new URL(referer).search);
-			http_user = urlParams.get('identifier');
+			queryParams = new URLSearchParams(new URL(referer).search);
 		}
 	    // Just for debugging ... 
 		console.warn(`${JSON.stringify(headers)}\r\n\r\n`)
-        if (!http_user) {
-          console.warn(
-            `${plugin_name}: Session is not authenticated by Query Param; no user detected. See referer header: ${JSON.stringify(headers)}`
-          );
-        } else {
-          console.log(
-            `${plugin_name}: Dashboard interacted with ${http_user}`
-          );
-        }
-        user.host = headers["host"] || null;
-        user.agent = headers["user-agent"] || null;
-        user.userId =  http_user
-        user.provider = "HTTP Query Param Auth";
-        msg._client["user"] = user;
+        msg._client["queryParams"] = Object.fromEntries(queryParams.entries());;
         return msg;
       },
     },
