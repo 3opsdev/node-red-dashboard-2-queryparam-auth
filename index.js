@@ -25,6 +25,19 @@ module.exports = function (RED) {
 		if (referer) {
 			queryParams = new URLSearchParams(new URL(referer).search);
 		}
+		
+		const cookies = headers.cookie;
+		if (cookies) {
+			let pairs = cookies.split(";");
+			let splittedPairs = pairs.map(cookie => cookie.split("="));
+			const cookieObj = splittedPairs.reduce(function (obj, cookie) {
+				obj[decodeURIComponent(cookie[0].trim())] = decodeURIComponent(cookie[1].trim());
+				return obj;
+			}, {})
+	
+			msg._client["cookies"] = cookieObj;
+		}
+		
 	    // Just for debugging ... 
 		console.warn(`${JSON.stringify(headers)}\r\n\r\n`)
         msg._client["queryParams"] = Object.fromEntries(queryParams.entries());;

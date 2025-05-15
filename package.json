@@ -1,7 +1,7 @@
 {
   "name": "@3ops/node-red-dashboard-2-queryparams-clientdata",
-  "version": "0.1.1",
-  "description": "Dashboard client data plugin which injects queryparams in client data",
+  "version": "0.1.2",
+  "description": "Dashboard client data plugin which injects queryparams and cookies in client data",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
